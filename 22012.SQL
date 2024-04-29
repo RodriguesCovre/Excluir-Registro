@@ -20,15 +20,15 @@ BEGIN
 			IF :NEW.STATUS = 'C' THEN
 				IF :NEW.MOTVALTER IS NULL THEN
 					Raise_Application_Error (-20343, 'Você tem que preencher o campo "MOTIVO DA ALTERAÇÃO"');
-						IF V_DHBAIXA IS NULL THEN
-							DELETE FROM TGFFIN WHERE NUFIN = :NEW.NUFIN;
-							V_MSG := 'Nr Financeiro: ' || :NEW.NUFIN || ', excluído da tela Movimentação Financeira.';
-								ELSE IF :OLD.STATUS = 'C' THEN
-									IF :NEW.STATUS != :OLD.STATUS THEN
-									Raise_Application_Error (-20343, 'Uma vez cancelado sempre candelado!');
-                        		END IF;
-                        	END IF;
-                       END IF;
+				IF V_DHBAIXA IS NULL THEN
+					DELETE FROM TGFFIN WHERE NUFIN = :NEW.NUFIN;
+					V_MSG := 'Nr Financeiro: ' || :NEW.NUFIN || ', excluído da tela Movimentação Financeira.';
+						ELSE IF :OLD.STATUS = 'C' THEN
+							IF :NEW.STATUS != :OLD.STATUS THEN
+							Raise_Application_Error (-20343, 'Uma vez cancelado sempre candelado!');
+                 			END IF;
+                 		END IF;
+                	END IF;
                 END IF;
             END IF;
         END IF;
