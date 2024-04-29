@@ -26,11 +26,11 @@ BEGIN
 						ELSE IF :OLD.STATUS = 'C' THEN
 							IF :NEW.STATUS != :OLD.STATUS THEN
 							Raise_Application_Error (-20343, 'Uma vez cancelado sempre candelado!');
+                 				END IF;
                  			END IF;
-                 		END IF;
+                		END IF;
                 	END IF;
-                END IF;
-            END IF;
+           	 END IF;
         END IF;
     EXCEPTION WHEN NO_DATA_FOUND THEN NULL;
 END;
